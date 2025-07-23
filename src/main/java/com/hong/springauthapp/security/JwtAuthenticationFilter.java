@@ -2,8 +2,8 @@ package com.hong.springauthapp.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hong.springauthapp.common.HttpResponseDto;
-import com.hong.springauthapp.user.User;
-import com.hong.springauthapp.user.dto.LoginRequestDto;
+import com.hong.springauthapp.user.entity.User;
+import com.hong.springauthapp.user.dto.LoginRequest;
 import com.hong.springauthapp.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             throw new AuthenticationServiceException("잘못된 HTTP 요청 입니다.");
         }
         try {
-            LoginRequestDto requestDto = objectMapper.readValue(request.getInputStream(), LoginRequestDto.class);
+            LoginRequest requestDto = objectMapper.readValue(request.getInputStream(), LoginRequest.class);
 
             return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(

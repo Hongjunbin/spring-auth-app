@@ -1,5 +1,6 @@
 package com.hong.springauthapp.user;
 
+import com.hong.springauthapp.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

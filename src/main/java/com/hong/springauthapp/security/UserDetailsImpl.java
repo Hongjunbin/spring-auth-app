@@ -1,6 +1,6 @@
 package com.hong.springauthapp.security;
 
-import com.hong.springauthapp.user.User;
+import com.hong.springauthapp.user.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

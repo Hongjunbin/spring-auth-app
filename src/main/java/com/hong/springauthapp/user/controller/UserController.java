@@ -2,7 +2,7 @@ package com.hong.springauthapp.user.controller;
 
 import com.hong.springauthapp.common.HttpResponseDto;
 import com.hong.springauthapp.user.UserService;
-import com.hong.springauthapp.user.dto.SignupRequestDto;
+import com.hong.springauthapp.user.dto.SignupRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<HttpResponseDto> signup(@RequestBody SignupRequestDto requestDto) {
+    public ResponseEntity<HttpResponseDto> signup(@RequestBody SignupRequest requestDto) {
         userService.signup(requestDto);
         return of(USER_SIGNUP_SUCCESS);
     }

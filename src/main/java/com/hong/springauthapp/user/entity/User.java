@@ -1,4 +1,4 @@
-package com.hong.springauthapp.user;
+package com.hong.springauthapp.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

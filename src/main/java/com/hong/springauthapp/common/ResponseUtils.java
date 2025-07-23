@@ -1,24 +1,24 @@
 package com.hong.springauthapp.common;
 
-import com.hong.springauthapp.exception.ResponseExceptionEnum;
+import com.hong.springauthapp.exception.ErrorCode;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseUtils {
 
-    public static ResponseEntity<HttpResponseDto> of(ResponseExceptionEnum responseExceptionEnum) {
-        return ResponseEntity.status(responseExceptionEnum.getHttpStatus())
-                .body(new HttpResponseDto(responseExceptionEnum.getHttpStatus().value(),
-                        responseExceptionEnum.getMessage()));
+    public static ResponseEntity<HttpResponse> of(ErrorCode errorCode) {
+        return ResponseEntity.status(errorCode.getHttpStatus())
+                .body(new HttpResponse(errorCode.getHttpStatus().value(),
+                        errorCode.getMessage()));
     }
 
-    public static ResponseEntity<HttpResponseDto> of(ResponseEnum responseEnum) {
+    public static ResponseEntity<HttpResponse> of(ResponseEnum responseEnum) {
         return ResponseEntity.status(responseEnum.getHttpStatus())
-                .body(new HttpResponseDto(responseEnum.getHttpStatus().value(),
+                .body(new HttpResponse(responseEnum.getHttpStatus().value(),
                         responseEnum.getMessage()));
     }
 
-    public static ResponseEntity<HttpResponseDto> of(ResponseEnum responseEnum, Object data) {
+    public static ResponseEntity<HttpResponse> of(ResponseEnum responseEnum, Object data) {
         return ResponseEntity.status(responseEnum.getHttpStatus())
-                .body(new HttpResponseDto(responseEnum.getHttpStatus().value(), responseEnum.getMessage(), data));
+                .body(new HttpResponse(responseEnum.getHttpStatus().value(), responseEnum.getMessage(), data));
     }
 }

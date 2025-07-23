@@ -1,6 +1,6 @@
 package com.hong.springauthapp.util;
 
-import com.hong.springauthapp.user.User;
+import com.hong.springauthapp.user.entity.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;

@@ -1,7 +1,9 @@
 package com.hong.springauthapp.user;
 
 import com.hong.springauthapp.redis.RedisService;
-import com.hong.springauthapp.user.dto.SignupRequestDto;
+import com.hong.springauthapp.user.dto.SignupRequest;
+import com.hong.springauthapp.user.entity.Role;
+import com.hong.springauthapp.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,11 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final RedisService redisService;
 
-    public void signup(SignupRequestDto requestDto) {
+    public void signup(SignupRequest request) {
         User user = User.builder()
-                .email(requestDto.getEmail())
-                .password(passwordEncoder.encode(requestDto.getPassword()))
-                .name(requestDto.getName())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .name(request.getName())
                 .role(Role.ROLE_USER)
                 .build();
 
