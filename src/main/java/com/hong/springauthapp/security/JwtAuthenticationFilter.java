@@ -1,7 +1,7 @@
 package com.hong.springauthapp.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hong.springauthapp.common.HttpResponseDto;
+import com.hong.springauthapp.common.HttpResponse;
 import com.hong.springauthapp.user.entity.User;
 import com.hong.springauthapp.user.dto.LoginRequest;
 import com.hong.springauthapp.util.JwtUtil;
@@ -59,7 +59,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     {
         User user = ((UserDetailsImpl) authResult.getPrincipal()).getUser();
         String accessToken = jwtUtil.createAccessToken(user);
-        HttpResponseDto responseDto = new HttpResponseDto(HttpStatus.OK.value(), "로그인이 성공적으로 되었습니다.", accessToken);
+        HttpResponse responseDto = new HttpResponse(HttpStatus.OK.value(), "로그인이 성공적으로 되었습니다.", accessToken);
 
         response.setHeader(JwtUtil.AUTHORIZATION_HEADER, accessToken);
         response.setCharacterEncoding("UTF-8");
@@ -78,7 +78,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
 
-        HttpResponseDto errorResponse = new HttpResponseDto(HttpStatus.UNAUTHORIZED.value(), failed.getMessage());
+        HttpResponse errorResponse = new HttpResponse(HttpStatus.UNAUTHORIZED.value(), failed.getMessage());
 
         String jsonResponse = objectMapper.writeValueAsString(errorResponse);
         response.getWriter().print(jsonResponse);

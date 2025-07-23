@@ -1,6 +1,6 @@
 package com.hong.springauthapp.user.controller;
 
-import com.hong.springauthapp.common.HttpResponseDto;
+import com.hong.springauthapp.common.HttpResponse;
 import com.hong.springauthapp.user.UserService;
 import com.hong.springauthapp.user.dto.SignupRequest;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<HttpResponseDto> signup(@RequestBody SignupRequest requestDto) {
+    public ResponseEntity<HttpResponse> signup(@RequestBody SignupRequest requestDto) {
         userService.signup(requestDto);
         return of(USER_SIGNUP_SUCCESS);
     }
