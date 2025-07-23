@@ -4,7 +4,6 @@ import com.hong.springauthapp.common.HttpResponse;
 import com.hong.springauthapp.user.UserService;
 import com.hong.springauthapp.user.dto.SignupRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,21 +19,21 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<HttpResponse> signup(@RequestBody SignupRequest requestDto) {
-        userService.signup(requestDto);
+    public ResponseEntity<HttpResponse> signup(@RequestBody SignupRequest request) {
+        userService.signup(request);
         return of(USER_SIGNUP_SUCCESS);
     }
 
     @GetMapping("/user-role")
     @PreAuthorize("hasAuthority('ROLE_USER')")
-    public ResponseEntity<String> userResponseTest() {
-        return ResponseEntity.status(HttpStatus.OK).body("유저 권한 테스트");
+    public ResponseEntity<HttpResponse> userResponseTest() {
+        return of(USER_AUTHORITY_TEST);
     }
 
     @GetMapping("/admin-role")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ResponseEntity<String> adminResponseTest() {
-        return ResponseEntity.status(HttpStatus.OK).body("어드민 권한 테스트");
+    public ResponseEntity<HttpResponse> adminResponseTest() {
+        return of(ADMIN_AUTHORITY_TEST);
     }
 
 }

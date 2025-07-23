@@ -1,5 +1,7 @@
 package com.hong.springauthapp.user;
 
+import com.hong.springauthapp.exception.CustomException;
+import com.hong.springauthapp.exception.ErrorCode;
 import com.hong.springauthapp.redis.RedisService;
 import com.hong.springauthapp.user.dto.SignupRequest;
 import com.hong.springauthapp.user.entity.Role;
@@ -17,14 +19,19 @@ public class UserService {
     private final RedisService redisService;
 
     public void signup(SignupRequest request) {
+
+        userRepository.findByEmail(request.email()).ifPresent(user -> {
+            throw new CustomException(ErrorCode.USER_ALREADY_EXISTS);
+        });
+
         User user = User.builder()
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .name(request.getName())
+                .email(request.email())
+                .password(passwordEncoder.encode(request.password()))
+                .name(request.name())
                 .role(Role.ROLE_USER)
                 .build();
 
-        redisService.createVerificationCode(user.getEmail());
+        redisService.hasVerifiedEmail(user.getEmail());
 
         userRepository.save(user);
     }

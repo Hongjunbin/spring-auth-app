@@ -1,4 +1,4 @@
-package com.hong.springauthapp.util;
+package com.hong.springauthapp.security;
 
 import com.hong.springauthapp.user.entity.User;
 import io.jsonwebtoken.*;

@@ -1,6 +1,5 @@
 package com.hong.springauthapp.security;
 
-import com.hong.springauthapp.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

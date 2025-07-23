@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hong.springauthapp.security.JwtAuthenticationFilter;
 import com.hong.springauthapp.security.JwtAuthorizationFilter;
 import com.hong.springauthapp.security.UserDetailsServiceImpl;
-import com.hong.springauthapp.util.JwtUtil;
+import com.hong.springauthapp.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -69,7 +69,8 @@ public class WebSecurityConfig {
                 authorizeHttpRequests
                         .requestMatchers(
                                 "/api/users/signup",
-                                "/api/users/login"
+                                "/api/users/login",
+                                "/api/auth/**"
                         ).permitAll()
                         .anyRequest().authenticated()
         );

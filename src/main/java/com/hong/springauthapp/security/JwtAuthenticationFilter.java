@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hong.springauthapp.common.HttpResponse;
 import com.hong.springauthapp.user.entity.User;
 import com.hong.springauthapp.user.dto.LoginRequest;
-import com.hong.springauthapp.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -41,8 +40,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
             return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
-                    requestDto.getEmail(),
-                    requestDto.getPassword()
+                    requestDto.email(),
+                    requestDto.password()
                 )
             );
         } catch (IOException e) {

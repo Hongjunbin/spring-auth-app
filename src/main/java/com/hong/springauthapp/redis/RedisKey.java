@@ -6,7 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum RedisKey {
-    VERIFICATION_CODE("verification_code:");
+    VERIFICATION_CODE("verification_code:"),
+    EMAIL_VERIFIED("verification_verified:");
 
     private final String keyPrefix;
 }
