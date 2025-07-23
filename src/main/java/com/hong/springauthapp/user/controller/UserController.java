@@ -1,6 +1,7 @@
-package com.hong.springauthapp.user;
+package com.hong.springauthapp.user.controller;
 
 import com.hong.springauthapp.common.HttpResponseDto;
+import com.hong.springauthapp.user.UserService;
 import com.hong.springauthapp.user.dto.SignupRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import static com.hong.springauthapp.common.ResponseEnum.USER_SIGNUP_SUCCESS;
+import static com.hong.springauthapp.common.ResponseEnum.*;
 import static com.hong.springauthapp.common.ResponseUtils.of;
 
 @RestController

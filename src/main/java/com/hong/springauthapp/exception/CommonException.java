@@ -1,4 +1,4 @@
-package com.hong.springauthapp.exception.common;
+package com.hong.springauthapp.exception;
 
 import lombok.Getter;
 

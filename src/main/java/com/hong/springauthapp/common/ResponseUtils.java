@@ -1,6 +1,6 @@
 package com.hong.springauthapp.common;
 
-import com.hong.springauthapp.exception.common.ResponseExceptionEnum;
+import com.hong.springauthapp.exception.ResponseExceptionEnum;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseUtils {
@@ -17,10 +17,8 @@ public class ResponseUtils {
                         responseEnum.getMessage()));
     }
 
-    public static ResponseEntity<HttpResponseDto> of(ResponseEnum responseEnum,
-                                                     Object data) {
+    public static ResponseEntity<HttpResponseDto> of(ResponseEnum responseEnum, Object data) {
         return ResponseEntity.status(responseEnum.getHttpStatus())
-                .body(new HttpResponseDto(responseEnum.getHttpStatus().value(),
-                        responseEnum.getMessage(), data));
+                .body(new HttpResponseDto(responseEnum.getHttpStatus().value(), responseEnum.getMessage(), data));
     }
 }
