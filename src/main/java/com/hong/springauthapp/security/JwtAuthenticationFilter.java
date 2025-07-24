@@ -77,7 +77,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
 
-        HttpResponse errorResponse = new HttpResponse(HttpStatus.UNAUTHORIZED.value(), failed.getMessage());
+        String errorMessage = "잘못된 아이디 또는 비밀번호 입니다.";
+        HttpResponse errorResponse = new HttpResponse(HttpStatus.UNAUTHORIZED.value(), errorMessage);
 
         String jsonResponse = objectMapper.writeValueAsString(errorResponse);
         response.getWriter().print(jsonResponse);
