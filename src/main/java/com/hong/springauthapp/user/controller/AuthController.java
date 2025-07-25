@@ -25,14 +25,14 @@ public class AuthController {
     @Operation(summary = "이메일 인증 코드 발급 및 이메일 전송")
     public ResponseEntity<HttpResponse> sendVerificationEmail(@RequestBody EmailRequest request) {
         authService.sendVerificationEmail(request.email());
-        return of(ResponseEnum.USER_SIGNUP_SUCCESS);
+        return of(ResponseEnum.EMAIL_VERIFICATION_CODE_SENT);
     }
 
     @PostMapping("/email/verify")
     @Operation(summary = "이메일 인증 코드 검증 및 인증 완료 상태 저장")
     public ResponseEntity<HttpResponse> verifyEmailCode(@RequestBody VerificationRequest request) {
         authService.verifyEmailCode(request);
-        return of(ResponseEnum.USER_SIGNUP_SUCCESS);
+        return of(ResponseEnum.EMAIL_VERIFICATION_SUCCESS);
     }
 
 }

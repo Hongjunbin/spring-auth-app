@@ -4,7 +4,6 @@ import com.hong.springauthapp.common.HttpResponse;
 import com.hong.springauthapp.user.UserService;
 import com.hong.springauthapp.user.dto.SignupRequest;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
